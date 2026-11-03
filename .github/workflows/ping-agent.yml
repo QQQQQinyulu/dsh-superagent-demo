@@ -1,0 +1,15 @@
+name: ping-agent
+on:
+  workflow_dispatch:
+permissions:
+  issues: write
+  contents: read
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on the test issue mentioning the agent account
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment 1 --repo "$GITHUB_REPOSITORY" --body "@QQQQQinyulu 请把 README.md 末尾追加一行：This repository is a test bed for dsh-superagent. 然后提交一个 PR。"
